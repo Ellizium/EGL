@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extension\Render\Mesh.cs" />
+    <Compile Include="FSM\AbstractState.cs" />
+    <Compile Include="FSM\State.cs" />
+    <Compile Include="FSM\StateMachine.cs" />
+    <Compile Include="FSM\StateManager.cs" />
     <Compile Include="GodotBase\GUI\Buttons\Button.cs" />
     <Compile Include="GodotBase\GUI\Buttons\CheckBox.cs" />
     <Compile Include="GodotBase\GUI\Buttons\CheckButton.cs" />
@@ -204,5 +208,6 @@
     <Compile Include="GodotBase\Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
