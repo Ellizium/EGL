@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Godot;
 
-namespace Fsm
+namespace EGL.FSM
 {
 	public class StateManager<T>
 	{
