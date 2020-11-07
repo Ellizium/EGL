@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9D40817E-6852-4CD6-AC2E-F14E9060DE34}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EGL</RootNamespace>
+    <AssemblyName>EGL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GodotSharp">
+      <HintPath>library\GodotSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharpEditor">
+      <HintPath>library\GodotSharpEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extension\Render\Mesh.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\Button.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\CheckBox.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\CheckButton.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\ColorPickerButton.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\LinkButton.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\MenuButton.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\OptionButton.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\TextureButton.cs" />
+    <Compile Include="GodotBase\GUI\Buttons\ToolButton.cs" />
+    <Compile Include="GodotBase\GUI\ColorRect.cs" />
+    <Compile Include="GodotBase\GUI\Containers\CenterContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\ColorPicker.cs" />
+    <Compile Include="GodotBase\GUI\Containers\Container.cs" />
+    <Compile Include="GodotBase\GUI\Containers\GraphNode.cs" />
+    <Compile Include="GodotBase\GUI\Containers\GridContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\HBoxContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\HSplitContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\MarginContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\PanelContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\ScrollContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\TabContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\VBoxContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\ViewportContainer.cs" />
+    <Compile Include="GodotBase\GUI\Containers\VSplitContainer.cs" />
+    <Compile Include="GodotBase\GUI\Control.cs" />
+    <Compile Include="GodotBase\GUI\GraphEdit.cs" />
+    <Compile Include="GodotBase\GUI\HScrollBar.cs" />
+    <Compile Include="GodotBase\GUI\HSlider.cs" />
+    <Compile Include="GodotBase\GUI\ItemList.cs" />
+    <Compile Include="GodotBase\GUI\NinePatchRect.cs" />
+    <Compile Include="GodotBase\GUI\Panel.cs" />
+    <Compile Include="GodotBase\GUI\Popups\AcceptDialog.cs" />
+    <Compile Include="GodotBase\GUI\Popups\ConfirmationDialog.cs" />
+    <Compile Include="GodotBase\GUI\Popups\FileDialog.cs" />
+    <Compile Include="GodotBase\GUI\Popups\Popup.cs" />
+    <Compile Include="GodotBase\GUI\Popups\PopupDialog.cs" />
+    <Compile Include="GodotBase\GUI\Popups\PopupMenu.cs" />
+    <Compile Include="GodotBase\GUI\Popups\WindowDialog.cs" />
+    <Compile Include="GodotBase\GUI\ProgressBar.cs" />
+    <Compile Include="GodotBase\GUI\ReferenceRect.cs" />
+    <Compile Include="GodotBase\GUI\Separators\HSeparator.cs" />
+    <Compile Include="GodotBase\GUI\Separators\VSeparator.cs" />
+    <Compile Include="GodotBase\GUI\SpinBox.cs" />
+    <Compile Include="GodotBase\GUI\Tabs.cs" />
+    <Compile Include="GodotBase\GUI\TextureProgress.cs" />
+    <Compile Include="GodotBase\GUI\TextureRect.cs" />
+    <Compile Include="GodotBase\GUI\Text\Label.cs" />
+    <Compile Include="GodotBase\GUI\Text\LineEdit.cs" />
+    <Compile Include="GodotBase\GUI\Text\RichTextLabel.cs" />
+    <Compile Include="GodotBase\GUI\Text\TextEdit.cs" />
+    <Compile Include="GodotBase\GUI\Tree.cs" />
+    <Compile Include="GodotBase\GUI\VideoPlayer.cs" />
+    <Compile Include="GodotBase\GUI\VScrollBar.cs" />
+    <Compile Include="GodotBase\GUI\VSlider.cs" />
+    <Compile Include="GodotBase\INode.cs" />
+    <Compile Include="GodotBase\Node.cs" />
+    <Compile Include="GodotBase\Nodes2D\Node2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\Area2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\CollisionPolygon2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\CollisionShape2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\DampedSpringJoint2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\GrooveJoint2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\KinematicBody2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\PinJoint2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\RayCast2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\RigidBody2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Physics\StaticBody2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\AnimatedSprite.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Camera2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\CanvasModulate.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\CPUParticles2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Light2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\LightOccluder2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Line2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\MeshInstance2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\MultiMeshInstance2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\ParallaxLayer.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Particles2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Polygon2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Position2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Skeleton2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Render\Sprite.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\AudioStreamPlayer2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\BackBufferCopy.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\Bone2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\Navigation2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\NavigationPolygonInstance.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\Path2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\PathFollow2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\RemoteTransform2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\TileMap.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\TouchScreenButton.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\VisibilityEnabler2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\VisibilityNotifier2D.cs" />
+    <Compile Include="GodotBase\Nodes2D\Utility\YSort.cs" />
+    <Compile Include="GodotBase\Nodes3D\Animations\BoneAttachment.cs" />
+    <Compile Include="GodotBase\Nodes3D\Animations\PhysicalBone.cs" />
+    <Compile Include="GodotBase\Nodes3D\Animations\Skeleton.cs" />
+    <Compile Include="GodotBase\Nodes3D\ARVR\ARVRAnchor.cs" />
+    <Compile Include="GodotBase\Nodes3D\ARVR\ARVRCamera.cs" />
+    <Compile Include="GodotBase\Nodes3D\ARVR\ARVRController.cs" />
+    <Compile Include="GodotBase\Nodes3D\ARVR\ARVROrigin.cs" />
+    <Compile Include="GodotBase\Nodes3D\Audio\AudioStreamPlayer3D.cs" />
+    <Compile Include="GodotBase\Nodes3D\Audio\Listener.cs" />
+    <Compile Include="GodotBase\Nodes3D\Cameras\Camera.cs" />
+    <Compile Include="GodotBase\Nodes3D\Cameras\ClippedCamera.cs" />
+    <Compile Include="GodotBase\Nodes3D\Cameras\InterpolatedCamera.cs" />
+    <Compile Include="GodotBase\Nodes3D\Cameras\SpringArm.cs" />
+    <Compile Include="GodotBase\Nodes3D\Navigations\Navigation.cs" />
+    <Compile Include="GodotBase\Nodes3D\Navigations\NavigationMeshInstance.cs" />
+    <Compile Include="GodotBase\Nodes3D\Navigations\Path.cs" />
+    <Compile Include="GodotBase\Nodes3D\Navigations\PathFollow.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\Area.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\CollisionPolygon.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\CollisionShape.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\ConeTwistJoint.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\Generic6DOFJoint.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\HingeJoint.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\KinematicBody.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\PinJoint.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\RayCast.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\RigidBody.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\SliderJoint.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\StaticBody.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\VehicleBody.cs" />
+    <Compile Include="GodotBase\Nodes3D\Physics\VehicleWheel.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGBox.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGCombiner.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGCylinder.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGMesh.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGPolygon.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGSphere.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\CSG\CSGTorus.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Light\BakedLightmap.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Light\DirectionalLight.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Light\GIProbe.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Light\OmniLight.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Light\ReflectionProbe.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Light\SpotLight.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\AnimatedSprite3D.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\CPUParticles.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\GridMap.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\ImmediateGeometry.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\MeshInstance.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\MultiMeshInstance.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\Particles.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\SoftBody.cs" />
+    <Compile Include="GodotBase\Nodes3D\Render\Visual\Sprite3D.cs" />
+    <Compile Include="GodotBase\Nodes3D\Spatial.cs" />
+    <Compile Include="GodotBase\Nodes3D\Utility\ProximityGroup.cs" />
+    <Compile Include="GodotBase\Nodes3D\Utility\RemoteTransform.cs" />
+    <Compile Include="GodotBase\Nodes3D\Utility\VisibilityEnabler.cs" />
+    <Compile Include="GodotBase\Nodes3D\Utility\VisibilityNotifier.cs" />
+    <Compile Include="GodotBase\Notification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
