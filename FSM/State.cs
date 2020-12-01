@@ -1,5 +1,4 @@
 using System;
-using Godot;
 namespace EGL.FSM
 {
 	public class State<T> : AbstractState<T>

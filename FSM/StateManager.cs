@@ -1,9 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Godot;
 
 namespace EGL.FSM
 {
@@ -79,31 +75,31 @@ namespace EGL.FSM
 			States.Add(newState);
 			return this;
 		}
-		public State<T> StateNewInstanse(string name, ulong priority)
+		public State<T> StateNewInstance(string name, ulong priority)
 		{
 			State<T> newState = new State<T>(name, priority);
 			AddState(newState);
 			return newState;
 		}
-		public State<T> StateNewInstanse(string name, ulong priority, Action<T> stateLogic)
+		public State<T> StateNewInstance(string name, ulong priority, Action<T> stateLogic)
 		{
 			State<T> newState = new State<T>(name, priority, stateLogic);
 			AddState(newState);
 			return newState;
 		}
-		public State<T> StateNewInstanse(string name, ulong priority, Action<T> stateLogic, Func<T, bool> enterCondition)
+		public State<T> StateNewInstance(string name, ulong priority, Action<T> stateLogic, Func<T, bool> enterCondition)
 		{
 			State<T> newState = new State<T>(name, priority, stateLogic, enterCondition);
 			AddState(newState);
 			return newState;
 		}
-		public State<T> StateNewInstanse(string name, ulong priority, Action<T> stateLogic, Action<T> onStateEnter, Action<T> onStateExit)
+		public State<T> StateNewInstance(string name, ulong priority, Action<T> stateLogic, Action<T> onStateEnter, Action<T> onStateExit)
 		{
 			State<T> newState = new State<T>(name, priority, stateLogic, onStateEnter, onStateExit);
 			AddState(newState);
 			return newState;
 		}
-		public State<T> StateNewInstanse(string name, ulong priority, Action<T> stateLogic, Action<T> onStateEnter, Action<T> onStateExit, Func<T, bool> enterCondition)
+		public State<T> StateNewInstance(string name, ulong priority, Action<T> stateLogic, Action<T> onStateEnter, Action<T> onStateExit, Func<T, bool> enterCondition)
 		{
 			State<T> newState = new State<T>(name, priority, stateLogic, onStateEnter, onStateExit, enterCondition);
 			AddState(newState);
