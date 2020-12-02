@@ -26,12 +26,12 @@ namespace EGL.FSM
         }
         public AbstractState<T> ToBlack(AbstractState<T> state)
         {
-            BlackSet.Add(state);
+            if (!state.Equals(this)) BlackSet.Add(state);
             return this;
         }
         public AbstractState<T> ToWhite(AbstractState<T> state)
         {
-            WhiteSet.Add(state);
+            if (!state.Equals(this)) WhiteSet.Add(state);
             return this;
         }
     }
