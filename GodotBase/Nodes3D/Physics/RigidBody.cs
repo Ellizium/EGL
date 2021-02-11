@@ -265,19 +265,23 @@ namespace EGL.GodotBase.Nodes3D.Physics
             #region RigidBody
             private void BodyEntered(Godot.Node body)
             {
-                ClassOwner.BodyEntered?.Invoke(((ICollisionBody)body).Reference);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyEntered?.Invoke(collision.Reference);
             }
             private void BodyExited(Godot.Node body)
             {
-                ClassOwner.BodyExited?.Invoke(((ICollisionBody)body).Reference);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyExited?.Invoke(collision.Reference);
             }
             private void BodyShapeEntered(int bodyId, Godot.Node body, int bodyShapeId, int localShape)
             {
-                ClassOwner.BodyShapeEntered?.Invoke(bodyId, ((ICollisionBody)body).Reference, bodyShapeId, localShape);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyShapeEntered?.Invoke(bodyId, collision.Reference, bodyShapeId, localShape);
             }
             private void BodyShapeExited(int bodyId, Godot.Node body, int bodyShapeId, int localShape)
             {
-                ClassOwner.BodyShapeExited?.Invoke(bodyId, ((ICollisionBody)body).Reference, bodyShapeId, localShape);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyShapeExited?.Invoke(bodyId, collision.Reference, bodyShapeId, localShape);
             }
             private void SleepingStateChanged()
             {

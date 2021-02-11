@@ -123,9 +123,11 @@ namespace EGL.GodotBase.Nodes3D.Physics
             Base = new _CollisionShape(this);
         }
 
-        protected class _CollisionShape : Godot.CollisionShape
+        protected class _CollisionShape : Godot.CollisionShape, ICollisionBody
         {
             public CollisionShape ClassOwner;
+
+            public INode Reference { get => ClassOwner; }
 
             public _CollisionShape(CollisionShape node)
             {

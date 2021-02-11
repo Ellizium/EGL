@@ -121,10 +121,10 @@ namespace EGL.GodotBase.Nodes3D.Physics
         public event Action MouseExited;
 
         //RigidBody
-        public event Action<Godot.Node> BodyEntered;
-        public event Action<Godot.Node> BodyExited;
-        public event Action<int, Godot.Node, int, int> BodyShapeEntered;
-        public event Action<int, Godot.Node, int, int> BodyShapeExited;
+        public event Action<INode> BodyEntered;
+        public event Action<INode> BodyExited;
+        public event Action<int, INode, int, int> BodyShapeEntered;
+        public event Action<int, INode, int, int> BodyShapeExited;
         public event Action SleepingStateChanged;
 
         public Godot.VehicleBody Base { get; }
@@ -134,9 +134,11 @@ namespace EGL.GodotBase.Nodes3D.Physics
             Base = new _VehicleBody(this);
         }
 
-        protected class _VehicleBody : Godot.VehicleBody
+        protected class _VehicleBody : Godot.VehicleBody, ICollisionBody
         {
             public VehicleBody ClassOwner;
+
+            public INode Reference { get => ClassOwner; }
 
             public _VehicleBody(VehicleBody node)
             {
@@ -264,19 +266,23 @@ namespace EGL.GodotBase.Nodes3D.Physics
             #region RigidBody
             private void BodyEntered(Godot.Node body)
             {
-                ClassOwner.BodyEntered?.Invoke(body);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyEntered?.Invoke(collision.Reference);
             }
             private void BodyExited(Godot.Node body)
             {
-                ClassOwner.BodyExited?.Invoke(body);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyExited?.Invoke(collision.Reference);
             }
             private void BodyShapeEntered(int bodyId, Godot.Node body, int bodyShapeId, int localShape)
             {
-                ClassOwner.BodyShapeEntered?.Invoke(bodyId, body, bodyShapeId, localShape);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyShapeEntered?.Invoke(bodyId, collision.Reference, bodyShapeId, localShape);
             }
             private void BodyShapeExited(int bodyId, Godot.Node body, int bodyShapeId, int localShape)
             {
-                ClassOwner.BodyShapeExited?.Invoke(bodyId, body, bodyShapeId, localShape);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyShapeExited?.Invoke(bodyId, collision.Reference, bodyShapeId, localShape);
             }
             private void SleepingStateChanged()
             {

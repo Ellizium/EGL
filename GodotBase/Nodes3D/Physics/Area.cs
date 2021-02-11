@@ -272,35 +272,43 @@ namespace EGL.GodotBase.Nodes3D.Physics
             #region Area
             private void AreaEntered(Godot.Area area)
             {
-                ClassOwner.AreaEntered?.Invoke(((_Area)area).ClassOwner);
+                _Area collision = area as _Area;
+                ClassOwner.AreaEntered?.Invoke(collision?.ClassOwner);
             }
             private void AreaExited(Godot.Area area)
             {
-                ClassOwner.AreaExited?.Invoke(((_Area)area).ClassOwner);
+                _Area collision = area as _Area;
+                ClassOwner.AreaExited?.Invoke(collision?.ClassOwner);
             }
             private void AreaShapeEntered(int areaId, Godot.Area area, int areaShapeId, int selfShapeId)
             {
-                ClassOwner.AreaShapeEntered?.Invoke(areaId, ((_Area)area).ClassOwner, areaShapeId, selfShapeId);
+                _Area collision = area as _Area;
+                ClassOwner.AreaShapeEntered?.Invoke(areaId, collision?.ClassOwner, areaShapeId, selfShapeId);
             }
             private void AreaShapeExited(int areaId, Godot.Area area, int areaShapeId, int selfShapeId)
             {
-                ClassOwner.AreaShapeExited?.Invoke(areaId, ((_Area)area).ClassOwner, areaShapeId, selfShapeId);
+                _Area collision = area as _Area;
+                ClassOwner.AreaShapeExited?.Invoke(areaId, collision?.ClassOwner, areaShapeId, selfShapeId);
             }
             private void BodyEntered(Godot.Node body)
             {
-                ClassOwner.BodyEntered?.Invoke(((ICollisionBody)body).Reference);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyEntered?.Invoke(collision.Reference);
             }
             private void BodyExited(Godot.Node body)
             {
-                ClassOwner.BodyExited?.Invoke(((ICollisionBody)body).Reference);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyExited?.Invoke(collision.Reference);
             }
             private void BodyShapeEntered(int areaId, Godot.Node body, int bodyShapeId, int selfShapeId)
             {
-                ClassOwner.BodyShapeEntered?.Invoke(areaId, ((ICollisionBody)body).Reference, bodyShapeId, selfShapeId);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyShapeEntered?.Invoke(areaId, collision.Reference, bodyShapeId, selfShapeId);
             }
             private void BodyShapeExited(int areaId, Godot.Node body, int bodyShapeId, int selfShapeId)
             {
-                ClassOwner.BodyShapeExited?.Invoke(areaId, ((ICollisionBody)body).Reference, bodyShapeId, selfShapeId);
+                ICollisionBody collision = body as ICollisionBody;
+                ClassOwner.BodyShapeExited?.Invoke(areaId, collision.Reference, bodyShapeId, selfShapeId);
             }
             #endregion
         }

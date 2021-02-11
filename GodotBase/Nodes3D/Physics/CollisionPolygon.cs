@@ -123,9 +123,11 @@ namespace EGL.GodotBase.Nodes3D.Physics
             Base = new _CollisionPolygon(this);
         }
 
-        protected class _CollisionPolygon : Godot.CollisionPolygon
+        protected class _CollisionPolygon : Godot.CollisionPolygon, ICollisionBody
         {
             public CollisionPolygon ClassOwner;
+
+            public INode Reference { get => ClassOwner; }
 
             public _CollisionPolygon(CollisionPolygon node)
             {
