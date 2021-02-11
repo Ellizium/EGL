@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EGL.GodotBase.Nodes3D.Physics
+namespace EGL.GodotBase.Utility
 {
-    public class Area : INode
+    public class Tween : INode
     {
         public Action Ready = null;
         public Action ExitTree = null;
@@ -104,7 +104,6 @@ namespace EGL.GodotBase.Nodes3D.Physics
             }
         }
 
-        //Node
         public event Action OnReady;
         public event Action Renamed;
         public event Action OnTreeEntered;
@@ -112,42 +111,26 @@ namespace EGL.GodotBase.Nodes3D.Physics
         public event Action OnTreeExiting;
         public event Action ScriptChanged;
 
-        //Spatial
-        public event Action VisibilityChanged;
+        public event Action TweenAllComleted;
+        public event Action<object, string> TweenCompleted;
+        public event Action<object, string> TweenStarted;
+        public event Action<object, string, float, object> TweenStep;
 
-        //CollisionObject
-        public event Action<Godot.Node,Godot.InputEvent,Godot.Vector3,Godot.Vector3,int> OnInputEvent;
-        public event Action MouseEntered;
-        public event Action MouseExited;
+        public Godot.Tween Base { get; }
 
-        //Area
-        public event Action<Area> AreaEntered;
-        public event Action<Area> AreaExited;
-        public event Action<int, Area, int, int> AreaShapeEntered;
-        public event Action<int, Area, int, int> AreaShapeExited;
-        public event Action<INode> BodyEntered;
-        public event Action<INode> BodyExited;
-        public event Action<int, INode, int, int> BodyShapeEntered;
-        public event Action<int, INode, int, int> BodyShapeExited;
-
-        public Godot.Area Base { get; }
-
-        public Area()
+        public Tween()
         {
-            Base = new _Area(this);
+            Base = new _Tween(this);
         }
 
-        protected class _Area : Godot.Area, ICollisionBody
+        protected class _Tween : Godot.Tween
         {
-            public Area ClassOwner;
+            public Tween ClassOwner;
 
-            public INode Reference { get => ClassOwner; }
-
-            public _Area(Area node)
+            public _Tween(Tween node)
             {
                 ClassOwner = node;
 
-                //Node
                 Connect("ready", this, nameof(Ready));
                 Connect("renamed", this, nameof(Renamed));
                 Connect("tree_entered", this, nameof(TreeEntered));
@@ -155,26 +138,12 @@ namespace EGL.GodotBase.Nodes3D.Physics
                 Connect("tree_exiting", this, nameof(TreeExiting));
                 Connect("script_changed", this, nameof(ScriptChanged));
 
-                //Spatial
-                Connect("visibility_changed", this, nameof(VisibilityChanged));
-
-                //CollisionObject
-                Connect("input_event", this, nameof(OnInputEvent));
-                Connect("mouse_entered", this, nameof(MouseEntered));
-                Connect("mouse_exited", this, nameof(MouseExited));
-
-                //Area
-                Connect("area_entered", this, nameof(AreaEntered));
-                Connect("area_exited", this, nameof(AreaExited));
-                Connect("area_shape_entered", this, nameof(AreaShapeEntered));
-                Connect("area_shape_exited", this, nameof(AreaShapeExited));
-                Connect("body_entered", this, nameof(BodyEntered));
-                Connect("body_exited", this, nameof(BodyExited));
-                Connect("body_shape_entered", this, nameof(BodyShapeEntered));
-                Connect("body_shape_Exited", this, nameof(BodyShapeExited));
+                Connect("tween_all_completed", this, nameof(TweenAllCompleted));
+                Connect("tween_completed", this, nameof(TweenCompleted));
+                Connect("tween_started", this, nameof(TweenStarted));
+                Connect("tween_step", this, nameof(TweenStep));
             }
 
-            #region Node
             public override void _Ready()
             {
                 if (ClassOwner._RenderProcess == null)
@@ -245,64 +214,14 @@ namespace EGL.GodotBase.Nodes3D.Physics
             {
                 ClassOwner.OnReady?.Invoke();
             }
-            #endregion
-
-            #region Spatial
-            private void VisibilityChanged()
-            {
-                ClassOwner.VisibilityChanged?.Invoke();
-            }
-            #endregion
-
-            #region CollisionObject
-            private void OnInputEvent(Godot.Node camera, Godot.InputEvent ev, Godot.Vector3 clickPosition, Godot.Vector3 normalPosition, int index)
-            {
-                ClassOwner.OnInputEvent?.Invoke(camera, ev, clickPosition, normalPosition, index);
-            }
-            private void MouseEntered()
-            {
-                ClassOwner.MouseEntered?.Invoke();
-            }
-            private void MouseExited()
-            {
-                ClassOwner.MouseExited?.Invoke();
-            }
-            #endregion
-
-            #region Area
-            private void AreaEntered(Godot.Area area)
-            {
-                ClassOwner.AreaEntered?.Invoke(((_Area)area).ClassOwner);
-            }
-            private void AreaExited(Godot.Area area)
-            {
-                ClassOwner.AreaExited?.Invoke(((_Area)area).ClassOwner);
-            }
-            private void AreaShapeEntered(int areaId, Godot.Area area, int areaShapeId, int selfShapeId)
-            {
-                ClassOwner.AreaShapeEntered?.Invoke(areaId, ((_Area)area).ClassOwner, areaShapeId, selfShapeId);
-            }
-            private void AreaShapeExited(int areaId, Godot.Area area, int areaShapeId, int selfShapeId)
-            {
-                ClassOwner.AreaShapeExited?.Invoke(areaId, ((_Area)area).ClassOwner, areaShapeId, selfShapeId);
-            }
-            private void BodyEntered(Godot.Node body)
-            {
-                ClassOwner.BodyEntered?.Invoke(((ICollisionBody)body).Reference);
-            }
-            private void BodyExited(Godot.Node body)
-            {
-                ClassOwner.BodyExited?.Invoke(((ICollisionBody)body).Reference);
-            }
-            private void BodyShapeEntered(int areaId, Godot.Node body, int bodyShapeId, int selfShapeId)
-            {
-                ClassOwner.BodyShapeEntered?.Invoke(areaId, ((ICollisionBody)body).Reference, bodyShapeId, selfShapeId);
-            }
-            private void BodyShapeExited(int areaId, Godot.Node body, int bodyShapeId, int selfShapeId)
-            {
-                ClassOwner.BodyShapeExited?.Invoke(areaId, ((ICollisionBody)body).Reference, bodyShapeId, selfShapeId);
-            }
-            #endregion
+            private void TweenAllCompleted()
+                => ClassOwner.TweenAllComleted?.Invoke();
+            private void TweenCompleted(object obj, string str)
+                => ClassOwner.TweenCompleted?.Invoke(obj, str);
+            private void TweenStarted(object obj, string str)
+                => ClassOwner.TweenStarted?.Invoke(obj, str);
+            private void TweenStep(object obj, string key, float elapsed, object value)
+                => ClassOwner.TweenStep?.Invoke(obj, key, elapsed, value);
         }
     }
 }

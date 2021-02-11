@@ -127,9 +127,11 @@ namespace EGL.GodotBase.Nodes3D.Physics
             Base = new _KinematicBody(this);
         }
 
-        protected class _KinematicBody : Godot.KinematicBody
+        protected class _KinematicBody : Godot.KinematicBody, ICollisionBody
         {
             public KinematicBody ClassOwner;
+
+            public INode Reference { get => ClassOwner; }
 
             public _KinematicBody(KinematicBody node)
             {

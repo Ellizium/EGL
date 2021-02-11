@@ -127,9 +127,10 @@ namespace EGL.GodotBase.Nodes3D.Physics
             Base = new _StaticBody(this);
         }
 
-        protected class _StaticBody : Godot.StaticBody
+        protected class _StaticBody : Godot.StaticBody, ICollisionBody
         {
             public StaticBody ClassOwner;
+            public INode Reference { get => ClassOwner; }
 
             public _StaticBody(StaticBody node)
             {

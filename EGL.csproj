@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extension\Render\Mesh.cs" />
+    <Compile Include="Extension\Utility\Timer.cs" />
     <Compile Include="FSM\AbstractState.cs" />
     <Compile Include="FSM\State.cs" />
     <Compile Include="FSM\StateMachine.cs" />
@@ -106,6 +106,7 @@
     <Compile Include="GodotBase\GUI\VideoPlayer.cs" />
     <Compile Include="GodotBase\GUI\VScrollBar.cs" />
     <Compile Include="GodotBase\GUI\VSlider.cs" />
+    <Compile Include="GodotBase\ICollisionBody.cs" />
     <Compile Include="GodotBase\INode.cs" />
     <Compile Include="GodotBase\Node.cs" />
     <Compile Include="GodotBase\Nodes2D\Node2D.cs" />
@@ -206,6 +207,9 @@
     <Compile Include="GodotBase\Nodes3D\Utility\VisibilityEnabler.cs" />
     <Compile Include="GodotBase\Nodes3D\Utility\VisibilityNotifier.cs" />
     <Compile Include="GodotBase\Notification.cs" />
+    <Compile Include="GodotBase\Utility\Timer.cs" />
+    <Compile Include="GodotBase\Utility\Tween.cs" />
+    <Compile Include="GodotBase\Utility\Viewport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
